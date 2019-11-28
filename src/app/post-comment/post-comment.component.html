@@ -1,0 +1,28 @@
+<mat-accordion #accordion="matAccordion" multi="true">
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Comments...
+      </mat-panel-title>
+      <mat-panel-description>
+
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-list role="list">
+      <form (submit)="createComment($event)" class="subscription relative width-50-per">
+        <input id="comment" matInput placeholder="Add a comment...">
+      </form>
+
+      <div *ngFor="let comment of comments">
+        <mat-list-item role="listitem">
+          <span class="width-90-per"><span style="color: #a7a7a7;">{{comment.user.nickname}}</span>&nbsp;<strong id="oldComment" name="comment" ngDefaultControl [(ngModel)]="comment">{{comment.comment}}</strong></span>
+          <button mat-icon-button *ngIf="comment.user.nickname == activeUser" style="outline: none; position: absolute; right: 10px;" (click)="openDialog($event, comment.id)">Edit</button>
+        </mat-list-item>
+      </div>
+
+    </mat-list>
+
+  </mat-expansion-panel>
+</mat-accordion>

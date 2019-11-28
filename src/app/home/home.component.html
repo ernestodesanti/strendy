@@ -1,0 +1,100 @@
+<div class="dup-body-wrap">
+  <!-- Start Header Area -->
+  <header class="default-header">
+    <div class="header-wrap">
+      <div class="header-top d-flex justify-content-between align-items-center">
+
+        <div class="logo">
+          <a href="home"><img src="assets/img/logo.png" alt=""></a>
+        </div>
+
+        <div>
+          <p>Welcome <strong>{{userNickname}}<mat-icon style="color: #FFDE00;">polymer</mat-icon></strong></p>
+          <button href="index.html" mat-button style="font-size: 20px; outline: none;" (click)="logout()" class="pull-right">Logout</button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+  <!-- End Header Area -->
+  <!-- Start Banner Area -->
+  <section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+
+    <div class="container float-left w-25 pt-150 position-absolute">
+      <p><strong>Your preferences</strong></p>
+
+      <div *ngFor="let preference of preferences" style="z-index: 999;">
+        <mat-card class="mb-1 font-medium-1">{{preference.name}}</mat-card>
+      </div>
+    </div>
+
+    <div class="container pt-150">
+
+      <mat-tab-group class="align-items-center pb-30 min-vh-100" style="background-image: linear-gradient(90deg, rgba(247, 247, 247, 0.1), rgba(247, 247, 247, 1),  rgba(247, 247, 247, 1),  rgba(247, 247, 247, 1),  rgba(247, 247, 247, 1),  rgba(247, 247, 247, 1), rgba(247, 247, 247, 0.1));">
+
+        <mat-tab label="Feed" class="mb-5">
+          <form (submit)="openDialog($event)" class="subscription relative" id="myForm">
+            <input id="strendText" type="text" name="STREND" placeholder="What's strending?" [(ngModel)]="text" required>
+
+            <button id="btnPost" [disabled]="text === ''" class="primary-btn">Strend</button>
+          </form>
+
+          <div class="row fullscreen align-items-center justify-content-center" *ngFor="let post of posts">
+            <app-post [post]="post"></app-post>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Your strends">
+          <div class="row fullscreen align-items-center justify-content-center">
+            <mat-card class="example-card cards" *ngIf="noStrends" style="max-width: 600px;">
+              <mat-card-header>
+                <mat-card-title>No strends</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  You have not strended anything yet! Head over to the feed and strend away
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="row fullscreen align-items-center justify-content-center" *ngFor="let post of myPosts">
+            <app-post [post]="post"></app-post>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Suggested strends">
+          <div class="row fullscreen align-items-center justify-content-center" *ngFor="let post of suggested">
+            <app-post [post]="post"></app-post>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Liked strends">
+          <div class="row fullscreen align-items-center justify-content-center">
+            <mat-card class="example-card cards" *ngIf="noLiked" style="max-width: 600px;">
+              <mat-card-header>
+                <mat-card-title>No liked strends</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  You have not liked any strends yet! Head over to the feed and check out what people have said
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="row fullscreen align-items-center justify-content-center" *ngFor="let post of liked">
+            <app-post [post]="post"></app-post>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+
+    </div>
+  </section>
+
+</div>
+
+<script src="js/vendor/bootstrap.min.js"></script>
+

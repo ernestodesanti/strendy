@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+  <p>What's your nickname?</p>
+  <mat-form-field style="width: 100%;">
+    <input matInput [(ngModel)]="data.nickname" required placeholder="Your nickname">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" style="outline: none;">Close</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="data.nickname" *ngIf="data.nickname" style="outline: none;">Login</button>
+</div>

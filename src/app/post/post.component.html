@@ -1,0 +1,19 @@
+<mat-card class="example-card cards">
+  <mat-card-header>
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-subtitle>{{post.user.nickname}} - {{post.timestamp}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card *ngIf="post.image" class="mb-3 width-90-per ml-auto mr-auto"><img mat-card-image src={{post.image}} alt="Photo"></mat-card>
+  <mat-card-content>
+    <p>
+      {{post.text}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="width-95-per">
+    <app-like [post]="post.id"></app-like>
+
+    <app-post-comment [post]="post.id"></app-post-comment>
+
+  </mat-card-actions>
+</mat-card>
+<mat-divider></mat-divider>

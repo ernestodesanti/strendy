@@ -1,0 +1,40 @@
+<div class="dup-body-wrap">
+  <!-- Start Header Area -->
+  <header class="default-header">
+    <div class="header-wrap">
+      <div class="header-top d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
+        </div>
+
+        <button mat-button style="font-size: 20px; outline: none;" (click)="openDialog()">Login</button>
+      </div>
+    </div>
+  </header>
+  <!-- End Header Area -->
+  <!-- Start Banner Area -->
+  <section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+      <div class="row fullscreen align-items-center justify-content-between" style="height: 708px;">
+        <div class="col-lg-6 col-md-7 col-sm-8">
+          <div class="banner-content">
+            <h1>Strend and view <br> whatever interests you</h1>
+            <p>Post -or how we like to call it <strong>strend</strong>- and share your thoughts with others. Select your
+              preferences of interest and view what other people have shared.</p>
+            <app-login></app-login>
+            <app-preferences></app-preferences>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-4">
+          <img src="assets/img/banner.png" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<script src="js/vendor/bootstrap.min.js"></script>
+

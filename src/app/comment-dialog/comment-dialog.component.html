@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Edit comment</h1>
+<div mat-dialog-content>
+  <p>New comment</p>
+  <mat-form-field style="width: 100%;">
+    <input matInput [(ngModel)]="data.comment" required placeholder="New comment">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" style="outline: none;">Close</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="data.comment" *ngIf="data.comment" style="outline: none;">Edit</button>
+</div>

@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Make your strend better</h1>
+<div mat-dialog-content>
+  <mat-form-field style="width: 100%;">
+    <input matInput [(ngModel)]="data.title" required placeholder="Strend title">
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <input matInput [(ngModel)]="data.text" required placeholder="Strend text" disabled>
+  </mat-form-field>
+
+  <mat-form-field class="example-chip-list w-100">
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let fruit of fruits"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(fruit)">
+        {{fruit}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Your preferences..."
+        #fruitInput
+        [formControl]="fruitCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+        {{fruit}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" style="outline: none;">Close</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="data" *ngIf="data.title" style="outline: none;">Create strend</button>
+</div>
