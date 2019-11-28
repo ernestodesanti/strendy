@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
 # Strendy Landing Page
+![Strendy Landing](/src/assets/img/StrendyLanding.png?raw=true "Landing")
 https://res.cloudinary.com/ernestodesanti/image/upload/v1574968672/StrendyLanding_jabfvi.png
 
 ## Development server
